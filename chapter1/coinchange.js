@@ -19,3 +19,22 @@ function coinchange(cents){
 }
 var cents = 84
 console.log(coinchange(cents))
+
+// creating a more efficient and less repetitive solution
+function coinchange2(cents){
+    let vals = [25,10,5,1]
+    let coins = ["Quarters", "Dimes", "Nickels","Pennies"]
+    for(let i = 0; i<coins.length;i++){
+        //printing how many of the coin and truncating the decimal
+        console.log(coins[i] + ':' + Math.trunc(cents/vals[i]))
+        //adjusting the amount left
+        cents = cents%vals[i]
+    }
+    return cents
+}
+console.log(coinchange2(84))
+// Quarters:3
+// Dimes:0
+// Nickels:1
+// Pennies:4
+// 0
