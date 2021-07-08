@@ -10,6 +10,10 @@ class BST{
     constructor(){
         this.root = null
     }
+    //Create an add(val) method on the bst object to add a new value to the 
+    //tree. This entails creating a btNode with this value and connecting 
+    //it at the appropriate place in the tree. Note: BSTs can contain duplicate 
+    //values.
     add(val){
         //chack if there is a root
         if(!this.root){
@@ -48,6 +52,9 @@ class BST{
             }
         }
     }
+    //Create a contains(val) bst method that returns whether the tree contains 
+    //a given value. Take advantage of the BST’s structure to make this a much
+    //more rapid operation than sList.contains() would be.
     contains(val){
         if(!this.root){
             console.log("false")
@@ -68,6 +75,23 @@ class BST{
             return false
         }
     }
+    //Write a size() method that returns the number of nodes (values) contained 
+    //in the tree.
+    size(){
+        //check if there is a root node
+        if(!this.root){
+            return 0
+        }
+        //creating a function to recursively count each node
+        function check(node){
+            if(node === null){
+                return 0
+            }
+            return 1 + check(node.left) + check(node.right)
+        }
+        return check(this.root)
+    }
+
 }
 let tree1 = new BST()
 let node1 = new Node(1)
@@ -81,3 +105,4 @@ tree1.add(1)
 console.log(tree1)
 tree1.contains(4)
 tree1.contains(5)
+console.log(tree1.size())
